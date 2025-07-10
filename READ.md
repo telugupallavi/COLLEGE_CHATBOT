@@ -25,9 +25,3 @@ This is a simple and classic web-based chatbot project built using **Python Flas
 
 ---
 
-## 🚀 Setup Instructions
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/college-chatbot.git
-   cd college-chatbot
