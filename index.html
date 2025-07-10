@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>College Query Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .chat-container {
+      width: 400px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-box {
+      height: 400px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .message {
+      padding: 10px 15px;
+      border-radius: 20px;
+      max-width: 75%;
+    }
+
+    .user {
+      background-color: #007bff;
+      color: white;
+      align-self: flex-end;
+    }
+
+    .bot {
+      background-color: #e5e5ea;
+      color: black;
+      align-self: flex-start;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 10px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <h3 style="text-align: center;">College Query Chatbot</h3>
+    <div class="chat-box" id="chatBox"></div>
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="Ask me anything...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const userInput = document.getElementById("userInput").value.trim();
+      if (userInput === "") return;
+
+      const chatBox = document.getElementById("chatBox");
+
+      // Display user message
+      const userMsg = document.createElement("div");
+      userMsg.className = "message user";
+      userMsg.innerText = userInput;
+      chatBox.appendChild(userMsg);
+
+      // Bot response
+      const botMsg = document.createElement("div");
+      botMsg.className = "message bot";
+      botMsg.innerText = getBotResponse(userInput.toLowerCase());
+      chatBox.appendChild(botMsg);
+
+      document.getElementById("userInput").value = "";
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function getBotResponse(input) {
+      if (input.includes("admission"))
+        return "Admissions are open from June to August. Visit the admissions office for details.";
+      else if (input.includes("fee") || input.includes("fees"))
+        return "The annual fee structure is available on the official website.";
+      else if (input.includes("hostel"))
+        return "Yes, separate hostel facilities are available for boys and girls with 24/7 security, Wi-Fi, and mess.";
+      else if (input.includes("library"))
+        return "Sorry, I don't have that information right now.";
+      else if (input.includes("placement"))
+        return "Our college has a dedicated placement cell that invites top companies every year.";
+      else
+        return "Sorry, I don't have that information right now.";
+    }
+  </script>
+</body>
+</html>
